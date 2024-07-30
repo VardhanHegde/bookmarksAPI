@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: flask run --host=0.0.0.0
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=src
+      - SECRET_KEY=${SECRET_KEY}
+      - SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URI}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    env_file:
+      - .env
