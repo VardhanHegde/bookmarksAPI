@@ -2,3 +2,5 @@
 /env
 src/__pycache__
 .env
+.flaskenv
+src/constants/__pycache__
