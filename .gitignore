@@ -4,3 +4,4 @@ src/__pycache__
 .env
 .flaskenv
 src/constants/__pycache__
+src/config/__pycache__

@@ -1,5 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-from enum import unique
 from datetime import datetime
 import string
 import random
@@ -22,7 +21,7 @@ class Bookmark(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     body = db.Column(db.Text(),nullable=False)
     url = db.Column(db.Text(),nullable=False)
-    short_url = db.Column(db.String(3),nullable=False)
+    short_url = db.Column(db.String(3),nullable=True)
     visists = db.Column(db.Integer,default = 0)
     user_id = db.Column(db.Integer,db.ForeignKey("user.id"))
     created_at = db.Column(db.DateTime(),default=datetime.now())
@@ -32,7 +31,7 @@ class Bookmark(db.Model):
         characters = string.digits + string.ascii_letters 
         picked_chars = ''.join(random.choices(characters,k =3))
         
-        link = self.query.filter_by(short_url=picked_chars).first
+        link = self.query.filter_by(short_url=picked_chars).first()
         
         if link:
             self.generate_short_character()
