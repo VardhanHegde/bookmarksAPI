@@ -16,3 +16,4 @@ services:
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
     env_file:
       - .env
+      - .flaskenv
