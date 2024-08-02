@@ -7,10 +7,15 @@ from flask_jwt_extended import JWTManager
 from src.constants.http_status_codes import *
 from flasgger import Swagger,swag_from
 from src.config.swagger import template,swagger_config
+from dotenv import load_dotenv
 
 def create_app(test_config=None):
+    
+    load_dotenv()
+    
     app = Flask(__name__,
     instance_relative_config = True)
+    
     
     if test_config is None:
         app.config.from_mapping(
@@ -24,6 +29,7 @@ def create_app(test_config=None):
             }
             
         )
+
     else:
         app.config.from_mapping(test_config)
     
